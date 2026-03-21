@@ -1,0 +1,160 @@
+.contenedor-inventario {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+}
+
+.encabezado {
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.encabezado h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 20px;
+    color: rgb(59, 153, 241);
+    font-weight: 500;
+    margin: 0;
+}
+
+.encabezado p {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    color: rgb(164, 164, 164);
+    margin: 2px 0 0;
+}
+
+button {
+    border: 1px solid rgb(148, 220, 251);
+    padding: 7px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: border-color 0.2s, transform 0.2s;
+    box-shadow: 0 0 0 3px rgba(55, 138, 221, 0.15);
+
+}
+
+button:hover {
+    color: rgb(59, 153, 241);
+    border-color: #898989;
+    transform: translateY(-2px);
+}
+
+.contenedor-cards {
+    display: flex;
+    justify-content: center;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    padding: 10px;
+    gap: 18px;
+}
+
+.card {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding: 8px;
+    border-radius: 15px;
+    width: 180px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.card h3 {
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+    color: #777;
+    margin-bottom: 10px;
+}
+.card p{
+        font-family: Georgia, 'Times New Roman', Times, serif, Times, serif;
+}
+
+.numero {
+    font-size: 28px;
+    font-weight: bold;
+    color: rgb(59, 153, 241);
+    margin: 0;
+}
+
+.descripcion {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 5px;
+}
+.card .bajo{
+    color:darkgoldenrod;
+}
+.card .inmediato{
+    color: rgb(184, 1, 1);
+}
+.card .bueno{
+    color: green;
+}
+.conte-filtros{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+.buscador {
+    position: relative;
+    width: 300px;
+}
+
+.buscador input {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border-radius: 25px;
+    border: 1px solid #ddd;
+    outline: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.buscador input:focus {
+    border-color: rgb(59, 153, 241);
+    box-shadow: 0 0 0 3px rgba(59, 153, 241, 0.15);
+}
+
+.buscador::before {
+    content: "🔍";
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: #999;
+}
+@media (max-width: 1024px) {
+    .contenedor-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+@media (max-width: 480px) {
+    .contenedor-cards {
+        grid-template-columns: 1fr;
+    }
+
+    .contenedor-inventario {
+        padding: 12px;
+    }
+
+    .card {
+        width: 120px;
+    }
+}

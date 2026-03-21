@@ -1,0 +1,324 @@
+.container-costeo {
+    background-color: white;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    grid-template-areas:
+        "info      resumen"
+        "directo   resumen"
+        "indirecto margen"
+        "venta     margen"
+        "inventario margen";
+    gap: 14px;
+    padding: 15px;
+    align-items: start;
+}
+
+h2,
+h3,
+h4,
+input, span {
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 16px;
+}
+input{
+    border-radius: 11px;
+    border: 1px solid rgba(185, 185, 185, 0.784);
+    padding: 6px;
+}
+
+input:hover{
+    cursor: auto;
+}
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #378ADD;
+  box-shadow: 0 0 0 3px rgba(55, 138, 221, 0.15);
+}
+select {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.info-producto,
+.costeo-directo,
+.costeo-indirecto,
+.inventario-inicial,
+.resumen-costo,
+.margen-ganancia {
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 10px;
+    box-shadow: 13px 13px 42px -4px rgba(194, 206, 249, 0.49);
+    transition: border-color 0.2s, transform 0.2s;
+
+}
+
+.info-producto:hover,
+.costeo-directo:hover,
+.costeo-indirecto:hover,
+.inventario-inicial:hover,
+.resumen-costo:hover,
+.margen-ganancia:hover {
+    border-color: #afccff;
+    cursor: pointer;
+    transform: translateY(-2px);
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 13px;
+}
+
+.encabezado h3 {
+    font-size: 11px;
+    font-weight: 500px;
+    color: #6b7280;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    margin: 0;
+}
+
+.encabezado h4 {
+    margin: 0;
+}
+
+.encabezado h4 span {
+    font-size: 10px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: #FCEBEB;
+    color: #791F1F;
+}
+.container-costeo input,
+.container-costeo select {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.nom-refere {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 12px;
+  padding: 20px;
+}
+
+.selectores {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+}
+
+.inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.categoria, .unidad-medida, .proveedor {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.margen-ganancia {
+  background: #EAF3DE;
+  border: 1px solid #C0DD97;
+  border-radius: 12px;
+  padding: 10px 12px;
+  transition: background 0.3s, border-color 0.3s;
+}
+
+.margen-ganancia .encabezado h3 {
+  color: #27500A;
+}
+
+.btn-editar {
+  font-size: 11px;
+  padding: 4px 12px;
+  border-radius: 20px;
+  border: 1px solid #3B6D11;
+  background: transparent;
+  color: #3B6D11;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s, color 0.2s;
+  width: auto;
+  margin: 0;
+}
+
+.btn-editar:hover {
+  background: #3B6D11;
+  color: #fff;
+}
+
+.btn-editar.guardando {
+  border-color: #185FA5;
+  color: #185FA5;
+}
+
+.btn-editar.guardando:hover {
+  background: #185FA5;
+  color: #fff;
+}
+
+.margen-valor-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.margen-num {
+  font-size: 36px;
+  font-weight: 600;
+  color: #27500A;
+  margin: 0;
+  line-height: 1;
+}
+
+.margen-input {
+  width: 80px;
+  height: 40px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #27500A;
+  border: 2px solid #3B6D11;
+  border-radius: 8px;
+  padding: 0 8px;
+  background: #fff;
+  text-align: center;
+}
+
+.margen-input.oculto {
+  display: none;
+}
+
+.margen-num.oculto {
+  display: none;
+}
+
+.margen-estado {
+  font-size: 13px;
+  color: #3B6D11;
+  margin: 4px 0 12px;
+}
+
+.ventasugerida,
+.utilidadxunidad {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #C0DD97;
+  font-size: 13px;
+}
+
+.utilidadxunidad {
+  border-bottom: none;
+}
+
+.venta-label,
+.utilidad-label {
+  color: #3B6D11;
+}
+
+.venta-valor,
+.utilidad-valor {
+  font-weight: 600;
+  color: #27500A;
+}
+
+.margen-ganancia.bajo {
+  background: #FAEEDA;
+  border-color: #EF9F27;
+}
+.margen-ganancia.bajo .encabezado h3,
+.margen-ganancia.bajo .margen-num,
+.margen-ganancia.bajo .margen-estado,
+.margen-ganancia.bajo .venta-label,
+.margen-ganancia.bajo .utilidad-label { color: #633806; }
+.margen-ganancia.bajo .venta-valor,
+.margen-ganancia.bajo .utilidad-valor { color: #412402; }
+.margen-ganancia.bajo .ventasugerida,
+.margen-ganancia.bajo .utilidadxunidad { border-color: #EF9F27; }
+
+.margen-ganancia.critico {
+  background: #FCEBEB;
+  border-color: #F09595;
+}
+.margen-ganancia.critico .encabezado h3,
+.margen-ganancia.critico .margen-num,
+.margen-ganancia.critico .margen-estado,
+.margen-ganancia.critico .venta-label,
+.margen-ganancia.critico .utilidad-label { color: #791F1F; }
+.margen-ganancia.critico .venta-valor,
+.margen-ganancia.critico .utilidad-valor { color: #501313; }
+.margen-ganancia.critico .ventasugerida,
+.margen-ganancia.critico .utilidadxunidad { border-color: #F09595; }
+
+button{
+    background-color: #449ef8;
+    color: white;
+    font-weight: bold;
+    height: 35px;
+    border-radius: 15px;
+    margin: 10px;
+    box-shadow: 13px 13px 42px -4px rgba(194, 206, 249, 0.49);
+    transition: border-color 0.2s, transform 0.2s;
+
+}
+
+
+button:hover {
+    background-color: white;
+    color: #449ef8;
+    cursor: pointer;
+    transform: translateY(-2px);
+    border: 1px solid #449ef8;
+}
+@media (max-width: 768px) {
+  .nom-refere {
+    grid-template-columns: 1fr;
+  }
+
+  .selectores {
+    grid-template-columns: 1fr;
+  }
+
+  .inputs {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) {
+    .container-costeo {
+        grid-template-columns: 1fr 280px;
+        padding: 16px;
+    }
+
+    h2,
+    h3,
+    h4,
+    input, select, span{
+        font-size: 12px;
+
+    }
+}
+
+@media (max-width: 768px) {
+    .container-costeo {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "info"
+            "directo"
+            "indirecto"
+            "venta"
+            "resumen"
+            "margen"
+            "inventario";
+        padding: 12px;
+    }
+}

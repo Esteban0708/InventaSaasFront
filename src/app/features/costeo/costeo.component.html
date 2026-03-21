@@ -1,0 +1,163 @@
+<div class="container-costeo">
+    <div class="info-producto ">
+        <div class="encabezado">
+            <h3>INFORMACIÓN GENERAL</h3>
+            <h4><span>requerido</span></h4>
+        </div>
+        <div class="contenido">
+            <div class="nom-refere">
+                <div>
+                    <h2>Nombre Producto:</h2>
+                    <input type="text" placeholder="Ej: Arroz Diana X50">
+                </div>
+                <div>
+                    <h2>Referencia:</h2>
+                    <input type="text" placeholder="Ej: ARR-50">
+                </div>
+            </div>
+            <div class="selectores p-6">
+                <div class="categoria">
+                    <h2>Categoria</h2>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option>Granos</option>
+                        <option>Lácteos</option>
+                    </select>
+                </div>
+                <div class="unidad-medida">
+                    <h2>Unidad de medida</h2>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option>Granos</option>
+                        <option>Lácteos</option>
+                    </select>
+                </div>
+                <div class="proveedor">
+                    <h2>Proveedor</h2>
+                    <select name="" id="">
+                        <option value="">Seleccione</option>
+                        <option>Granos</option>
+                        <option>Lácteos</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="resumen-costo">
+        <div class="encabezado">
+            <h3>Resumen de costos</h3>
+            <h4><span>requerido</span></h4>
+        </div>
+        <div class="resumen ">
+            <div class="flex flex-row justify-between gap-2 border-b-2"><span> Precio de compra</span>
+                <span>{{precioCompra}}</span>
+            </div>
+            <div class="flex flex-row justify-between border-b-2"><span>Flete</span> <span>${{flete}}</span></div>
+            <div class="flex flex-row justify-between border-b-2"><span>Almacenamiento</span>
+                <span>{{almacenamiento}}</span>
+            </div>
+            <div class="flex flex-row justify-between border-b-2"><span>Impuestos </span> <span>${{impuesto}}</span>
+            </div>
+            <div class="flex flex-row justify-between border-b-2"><span>Mano de obra</span><span>${{manoobra}}</span>
+            </div>
+            <div class="flex flex-row justify-between border-b-2"><span>Merma </span> <span>{{merma}}</span></div>
+            <div class="flex flex-row justify-between border-b-2"><span>Otros costos </span><span>{{otros}}</span></div>
+            <div class="flex flex-row justify-between border-t-2">
+                <p class="font-medium">Costo total unitario </p><span>${{total}}</span>
+            </div>
+        </div>
+    </div>
+    <div class="costeo-directo">
+        <div class="encabezado">
+            <h3>Costos directos</h3>
+            <h4><span>requerido</span></h4>
+        </div>
+        <div class="inputs ">
+            <div>
+                <h2>Precio de compra</h2>
+                <input type="number" name="" id="" min="0">
+            </div>
+            <div>
+                <h2>Flete/transporte</h2>
+                <input type="number" min="0">
+            </div>
+            <div>
+                <h2>Cantidad</h2>
+                <input type="number" name="" id="" min="0">
+            </div>
+            <div>
+                <h3>Impuesto</h3>
+                <input type="number" name="" id="" min="0">
+            </div>
+        </div>
+    </div>
+    <div class="margen-ganancia">
+        <div class="encabezado">
+            <h3>Margen de ganancia</h3>
+            <button class="btn-editar" id="btnMargen" (click)="toggleEditarMargen()">
+                Editar
+            </button>
+        </div>
+
+        <div class="marge-contenido">
+            <div class="porcentaje">
+                <div class="margen-valor-row">
+                    <h2 class="margen-num" id="margenDisplay">20%</h2>
+                    <input type="number" id="margenInput" class="margen-input oculto" value="20" min="1" max="80"
+                        placeholder="%">
+                </div>
+                <h2 class="margen-estado" id="margenEstado">Margen saludable</h2>
+            </div>
+
+            <div class="ventasugerida">
+                <span class="venta-label">Precio de venta sugerido</span>
+                <span class="venta-valor" id="precioSugerido">$0</span>
+            </div>
+
+            <div class="utilidadxunidad">
+                <span class="utilidad-label">Utilidad por unidad</span>
+                <span class="utilidad-valor" id="utilidadUnidad">$0</span>
+            </div>
+        </div>
+    </div>
+    <div class="flex flex-row gap-4">
+
+        <div class="costeo-indirecto">
+            <div class="encabezado">
+                <h3>Costos indirectos</h3>
+                <h4><span>requerido</span></h4>
+            </div>
+            <div class="inputs">
+                <div class="Almacenamiento">
+                    <h2>Almacenamiento</h2>
+                    <input type="number" placeholder="$" min="0">
+                </div>
+                <div class="ManoObra">
+                    <h2>Mano de Obra</h2>
+                    <input type="text" placeholder="$" min="0">
+                </div>
+                <div class="Merma">
+                    <h2>Merma %</h2>
+                    <input type="number" placeholder="0" min="0">
+                </div>
+            </div>
+        </div>
+        <div class="inventario-inicial">
+            <div class="encabezado">
+                <h3>Inventario inicial</h3>
+                <h4><span>requerido</span></h4>
+            </div>
+            <div class="inputs">
+                <div class="stockInicial">
+                    <h2>Stock Inicial</h2>
+                    <input type="number" placeholder="0" min="0">
+                </div>
+                <div class="ManoObra">
+                    <h2>Stock mínimo (alerta)</h2>
+                    <input type="text" placeholder="5" min="0">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="Guardar">Guardar</button>
+</div>

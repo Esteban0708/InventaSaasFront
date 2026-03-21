@@ -1,0 +1,28 @@
+<button class="hamburguesa" (click)="toggleMenu()">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
+
+<div class="overlay" *ngIf="menuAbierto" (click)="cerrarMenu()"></div>
+
+<div class="sidebar" [class.abierto]="menuAbierto">
+
+    <div class="brand">
+        <span class="brand-name">InventaSaaS</span>
+        <span class="brand-rol">{{ rol }}</span>
+    </div>
+
+    <nav class="nav">
+        <a *ngFor="let item of menuItems" [routerLink]="item.ruta" routerLinkActive="active" class="nav-item">
+            {{item.icono}} {{ item.label }} 
+        </a>
+    </nav>
+
+    <div class="footer">
+        <button class="btn-salir" (click)="cerrarSesion()">
+            Cerrar sesión
+        </button>
+    </div>
+
+</div>
