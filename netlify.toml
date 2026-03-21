@@ -1,3 +1,8 @@
+[build]
+  base = "InventaSaasFront"
+  command = "ng build --configuration production"
+  publish = "InventaSaasFront/dist/inventa-saas"
+
 [[redirects]]
   from = "/*"
   to = "/index.html"
