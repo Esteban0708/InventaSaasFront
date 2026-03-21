@@ -1,3 +1,4 @@
+import { environment } from '../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
@@ -9,7 +10,7 @@ import { jwtDecode } from 'jwt-decode';
 })
 export class AuthService {
 
-  private apiUrl = 'https://localhost:7063/api/auth';
+private apiUrl = `${environment.apiUrl}/auth`;
 
   constructor(private http: HttpClient) { }
 
