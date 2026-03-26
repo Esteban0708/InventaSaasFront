@@ -1,3 +1,3 @@
 export const environment = {
-  apiUrl: 'https://inventasaas.runasp.net/api'
+  apiUrl: 'https://inventasaas-production.up.railway.app/api'
 };
