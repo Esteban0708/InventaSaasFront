@@ -77,8 +77,9 @@ button:hover {
     color: #777;
     margin-bottom: 10px;
 }
-.card p{
-        font-family: Georgia, 'Times New Roman', Times, serif, Times, serif;
+
+.card p {
+    font-family: Georgia, 'Times New Roman', Times, serif, Times, serif;
 }
 
 .numero {
@@ -93,16 +94,20 @@ button:hover {
     color: #aaa;
     margin-top: 5px;
 }
-.card .bajo{
-    color:darkgoldenrod;
+
+.card .bajo {
+    color: darkgoldenrod;
 }
-.card .inmediato{
+
+.card .inmediato {
     color: rgb(184, 1, 1);
 }
-.card .bueno{
+
+.card .bueno {
     color: green;
 }
-.conte-filtros{
+
+.conte-filtros {
     display: flex;
     justify-content: space-between;
     padding: 20px;
@@ -121,7 +126,7 @@ button:hover {
     outline: none;
     font-size: 14px;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .buscador input:focus {
@@ -138,6 +143,240 @@ button:hover {
     font-size: 14px;
     color: #999;
 }
+
+.container-tabla {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    text-align: center;
+    border: none;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    padding: 10px;
+    align-items: center;
+    text-align: center;
+
+}
+
+.table thead {
+    background: #f8f9fa;
+    border-bottom: 1px solid #e5e7eb;
+    text-align: center;
+}
+
+.table th {
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 12px;
+    color: #6b7280;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.table td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #f3f4f6;
+    vertical-align: middle;
+}
+
+.table tbody tr:hover td {
+    background: #f9fafb;
+}
+
+.prod-nombre {
+    font-weight: 500;
+    font-size: 13px;
+    color: #111827;
+}
+
+.prod-ref {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-top: 1px;
+}
+
+.stock-actual {
+    font-weight: 600;
+}
+
+.stock-min {
+    font-size: 11px;
+    color: #9ca3af;
+}
+
+.stock-critico {
+    color: #dc2626;
+}
+
+.stock-bajo {
+    color: #d97706;
+}
+
+.stock-normal {
+    color: #111827;
+}
+
+.badge {
+    display: inline-block;
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.badge-normal {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.badge-bajo {
+    background: #fef9c3;
+    color: #854d0e;
+}
+
+.badge-critico {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.acciones {
+    display: flex;
+    gap: 4px;
+    flex-wrap: nowrap;
+}
+
+.btn-accion {
+    padding: 4px 9px;
+    font-size: 12px;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    color: #374151;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s;
+}
+
+.btn-accion:hover {
+    background: #f3f4f6;
+}
+
+.btn-accion.editar {
+    color: #059669;
+    border-color: #a7f3d0;
+}
+
+.btn-accion.editar:hover {
+    background: #ecfdf5;
+}
+
+
+.btn-accion.eliminar {
+    color: #dc2626;
+    border-color: #fecaca;
+}
+
+.btn-accion.eliminar:hover {
+    background: #fef2f2;
+}
+
+.container-tabla {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border-radius: 12px;
+}
+.pagination-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: 12px;
+}
+.pagination-info{
+    color: #9ca3af;
+}
+.pagination{
+    display: flex;
+    list-style: none;
+    gap: 4px;
+    margin: 0;
+    padding: 0;
+}
+.page-item .page-link{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    background-color: #fff;
+    color: #374151;
+    font-size: 13px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.15s;
+    user-select: none;
+}
+.page-item .page-link:hover {
+    background: #f3f4f6;
+    border-color: #d1d5db;
+}
+
+.page-item.active .page-link {
+    background: rgb(59, 153, 241);
+    border-color: rgb(59, 153, 241);
+    color: #fff;
+}
+
+.page-item.disabled .page-link {
+    color: #d1d5db;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+@media (max-width: 900px) {
+
+    .col-proveedor,
+    .col-costo {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+
+    .col-categoria,
+    .col-pventa {
+        display: none;
+    }
+
+    .btn-accion span {
+        display: none;
+    }
+
+    .btn-accion::before {
+        font-size: 14px;
+    }
+
+    .btn-accion.editar::before {
+        content: "✏️";
+    }
+
+    .btn-accion.eliminar::before {
+        content: "🗑";
+    }
+
+    .btn-accion {
+        padding: 5px 7px;
+    }
+}
+
 @media (max-width: 1024px) {
     .contenedor-cards {
         grid-template-columns: repeat(2, minmax(0, 1fr));

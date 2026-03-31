@@ -13,11 +13,14 @@ import { InventarioComponent } from './features/inventario/inventario.component'
 import { VentasComponent } from './features/ventas/ventas.component';
 import { CosteoComponent } from './features/costeo/costeo.component';
 import { FacturacionComponent } from './features/facturacion/facturacion.component';
+import { CommonModule } from '@angular/common';
+import { UsuariosComponent } from './features/usuarios/usuarios.component';
+import { EditarProductoComponent } from './features/editar-producto/editar-producto.component';
+import { EliminarProductoComponent } from './features/eliminar-producto/eliminar-producto.component';
 import { LayoutComponent } from './layout/layout/layout.component';
 import { SidebarComponent } from './layout/sidebar/sidebar/sidebar.component';
 import { TopbarComponent } from './layout/topbar/topbar/topbar.component';
-import { CommonModule } from '@angular/common';
-import { UsuariosComponent } from './features/usuarios/usuarios.component';
+import { ZXingScannerModule } from '@zxing/ngx-scanner';
 
 @NgModule({
   declarations: [
@@ -33,9 +36,12 @@ import { UsuariosComponent } from './features/usuarios/usuarios.component';
     LayoutComponent,
     SidebarComponent,
     TopbarComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    EditarProductoComponent,
+    EliminarProductoComponent
   ],
   imports: [
+    ZXingScannerModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,

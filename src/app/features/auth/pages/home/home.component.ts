@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component, ElementRef } from '@angular/core';
 import { Route, Router } from '@angular/router';
 
 @Component({
@@ -6,13 +6,25 @@ import { Route, Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent {
+export class HomeComponent implements AfterViewInit {
 
-  constructor(private router: Router){
+  constructor(private router: Router, private el: ElementRef) {
 
   }
 
-  login(){
+  login() {
     this.router.navigate(['/login'])
+  }
+  ngAfterViewInit() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    const elements = document.querySelectorAll('.animate');
+    elements.forEach(el => observer.observe(el));
   }
 }

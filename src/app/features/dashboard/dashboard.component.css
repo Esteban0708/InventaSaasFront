@@ -2,50 +2,47 @@
   background-color: white;
 }
 
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 8px;
-  padding: 14px;
+.dash {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: #f8fafc;
 }
 
 .encabezado {
-  display: flex;
-  position: relative;
-  width: 100%;
-  padding: 16px 30px;
-  gap: 10px;
-  background-color: white;
-  text-align: left;
+  padding: 4px 10px 0;
 }
 
 h1 {
-  font-size: 25px;
-  font-weight: bold;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-size: 20px;
+  color: rgb(59, 153, 241);
+  font-weight: 500;
+  margin: 0;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
 }
 
 .card {
   background: #fff;
   border: 1px solid #e5e7eb;
   border-radius: 12px;
-  padding: 16px 18px;
+  padding: 14px 16px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   cursor: pointer;
-  transition: border-color 0.2s, transform 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s;
 }
 
 .card:hover {
-  border-color: #afccff;
-  transform: translateY(-2px);
-}
-
-.card .dinera span {
-  color: green;
-  padding: 7px;
-  font-weight: bold;
+  border-color: #bfdbfe;
+  box-shadow: 0 4px 16px rgba(59, 153, 241, 0.1);
 }
 
 .card-top {
@@ -60,25 +57,9 @@ h1 {
 }
 
 .icon {
-  width: 32px;
-  height: 32px;
+  width: 30px;
+  height: 30px;
   border-radius: 8px;
-}
-
-.icon-blue {
-  background: #E6F1FB;
-}
-
-.icon-teal {
-  background: #E1F5EE;
-}
-
-.icon-purple {
-  background: #EEEDFE;
-}
-
-.icon-amber {
-  background: #FAEEDA;
 }
 
 .card-value {
@@ -89,14 +70,32 @@ h1 {
 }
 
 .card-total {
-  font-size: 16px;
+  font-size: 15px;
   color: #9ca3af;
+  font-weight: 400;
 }
 
 .card-bottom {
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.card-sub {
+  font-size: 11px;
+  color: #9ca3af;
+}
+
+.dinera span {
+  color: green;
+  font-weight: 700;
+  font-size: 20px;
+  padding-right: 2px;
+}
+
+.accent-bar {
+  height: 3px;
+  border-radius: 2px;
 }
 
 .badge {
@@ -120,32 +119,270 @@ h1 {
   color: #444441;
 }
 
-.card-sub {
+.seccion {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.sec-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #111827;
+  margin-bottom: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sec-title span {
   font-size: 11px;
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.span-danger {
+  color: #991b1b !important;
+}
+
+.row2 {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+}
+
+.row3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 12px;
+}
+
+.chart-area {
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.bar-wrap {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.bar {
+  width: 100%;
+  border-radius: 4px 4px 0 0;
+  transition: opacity 0.2s;
+}
+
+.bar:hover {
+  opacity: 0.75;
+  cursor: pointer;
+}
+
+.bar-label {
+  font-size: 10px;
   color: #9ca3af;
 }
 
-.accent-bar {
-  height: 3px;
+.bar-val {
+  font-size: 10px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+
+th {
+  padding: 6px 8px;
+  text-align: left;
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 500;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+td {
+  padding: 8px;
+  border-bottom: 1px solid #f9fafb;
+  color: #374151;
+  vertical-align: middle;
+}
+
+tr:last-child td {
+  border-bottom: none;
+}
+
+.prod-nom {
+  font-weight: 500;
+  color: #111827;
+  font-size: 12px;
+}
+
+.prod-ref {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.td-total {
+  font-weight: 600;
+  color: #111827;
+}
+
+.badge-critico {
+  background: #fee2e2;
+  color: #991b1b;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.badge-bajo {
+  background: #fef9c3;
+  color: #854d0e;
+  font-size: 10px;
+  padding: 2px 7px;
+  border-radius: 20px;
+  font-weight: 500;
+}
+
+.rank-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.rank-item:last-child {
+  border-bottom: none;
+}
+
+.rank-num {
+  font-size: 12px;
+  font-weight: 600;
+  color: #9ca3af;
+  width: 16px;
+  text-align: center;
+}
+
+.rank-info {
+  flex: 1;
+}
+
+.rank-nom {
+  font-size: 12px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.rank-sub {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.rank-val {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1d4ed8;
+  white-space: nowrap;
+}
+
+.bar-rank {
+  height: 4px;
+  background: #e5e7eb;
+  border-radius: 2px;
+  margin-top: 3px;
+}
+
+.bar-rank-fill {
+  height: 4px;
+  background: #378ADD;
   border-radius: 2px;
 }
 
-.cards-grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 14px;
-  padding: 24px;
+.tienda-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 0;
+  border-bottom: 1px solid #f9fafb;
+}
+
+.tienda-item:last-child {
+  border-bottom: none;
+}
+
+.tienda-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.tienda-info {
+  flex: 1;
+}
+
+.tienda-nom {
+  font-size: 12px;
+  font-weight: 500;
+  color: #111827;
+}
+
+.tienda-sub {
+  font-size: 10px;
+  color: #9ca3af;
+}
+
+.tienda-derecha {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+}
+
+.tienda-val {
+  font-size: 12px;
+  font-weight: 600;
+  color: #111827;
 }
 
 @media (max-width: 1024px) {
   .cards-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .row2 {
+    grid-template-columns: 1fr;
+  }
+
+  .row3 {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 640px) {
   .cards-grid {
     grid-template-columns: 1fr;
-    padding: 16px;
+  }
+
+  .row3 {
+    grid-template-columns: 1fr;
+  }
+
+  .dash {
+    padding: .75rem;
   }
 }

@@ -1,41 +1,140 @@
 <nav class="menu flex items-center justify-between px-8">
 
-    <div>
-        <img class="h-20" src="./../../../../../assets/img/logoSaas.png" alt="Logo">
-    </div>
+  <div>
+    <img class="h-20" src="./../../../../../assets/img/logoSaas.png" alt="Logo">
+  </div>
 
-    <ul class="flex gap-6">
-        <li>
-            <a class="px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
-                Descripción
-            </a>
-        </li>
-        <li>
-            <a class="px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
-                Características
-            </a>
-        </li>
-        <li>
-            <a class="px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
-                Cotización
-            </a>
-        </li>
-        <li>
-            <a class="px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
-                Funcionalidades
-            </a>
-        </li>
-        <li>
-            <a class="px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
-                Planes
-            </a>
-        </li>
-    </ul>
+  <ul class="flex gap-6">
+    <li>
+      <a href="#descripcion" class="px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
+        Descripción
+      </a>
+    </li>
+    <li>
+      <a href="#caracteristicas"
+        class="px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
+        Características
+      </a>
+    </li>
+    <li>
+      <a class="px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
+        Cotización
+      </a>
+    </li>
+    <li>
+      <a class="px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
+        Funcionalidades
+      </a>
+    </li>
+    <li>
+      <a class="px-3 py-1 rounded-md hover:bg-blue-600 hover:text-white transition duration-300">
+        Planes
+      </a>
+    </li>
+  </ul>
 
-    <div class="ml-6" >
-        <button class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-300" (click)="login()">
-            Iniciar Sesión
-        </button>
-    </div>
+  <div class="ml-6">
+    <button class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+      (click)="login()">
+      Iniciar Sesión
+    </button>
+  </div>
 
 </nav>
+
+<section id="descripcion" class="about animate">
+  <div class="about-text">
+    <span class="badge blue">Sobre InventaSaaS</span>
+
+    <h2>La forma más simple de controlar tu negocio</h2>
+
+    <p class="about-desc">
+      InventaSaaS es una plataforma diseñada para emprendedores y negocios
+      que necesitan controlar su inventario, ventas y costos sin complicaciones.
+      Todo en un solo lugar, en tiempo real y desde cualquier dispositivo.
+    </p>
+
+    <p class="about-desc">
+      Olvídate de Excel, errores manuales y pérdida de información.
+      Con InventaSaaS tendrás control total, automatización y decisiones inteligentes.
+    </p>
+
+    <div class="about-stats">
+      <div>
+        <h3>+100</h3>
+        <p>Negocios activos</p>
+      </div>
+
+      <div>
+        <h3>99%</h3>
+        <p>Precisión en inventario</p>
+      </div>
+
+      <div>
+        <h3>24/7</h3>
+        <p>Acceso en la nube</p>
+      </div>
+    </div>
+
+    <button class="cta">Comenzar ahora</button>
+  </div>
+
+  <div class="about-img">
+    <img src="../../../../../assets/img/venta.png" />
+  </div>
+</section>
+<section id="caracteristicas" class="features-section">
+
+  <div class="features-header">
+    <span class="badge blue">Características</span>
+    <h2>Todo lo que necesitas para controlar tu negocio</h2>
+    <p>
+      Automatiza procesos, toma decisiones inteligentes y lleva tu empresa al siguiente nivel
+    </p>
+  </div>
+
+  <div class="features-grid animate">
+
+    <div class="feature-card animate">
+      <div class="feature">
+        <span class="badge blue">Analisis</span>
+        <h2>Control total de tu negocio</h2>
+        <p class="subtitle">¡Por supuesto!</p>
+        <div class="feature-img glow-blue">
+          <img src="../../../../../assets/img/dashboard.png" />
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card">
+      <div class="feature">
+        <span class="badge green">Inventario</span>
+        <h2>Gestión inteligente de productos</h2>
+        <p class="subtitle">
+          Organiza, filtra y controla todo en segundos
+        </p>
+        <div class="feature-img glow-green">
+          <img src="../../../../../assets/img/inventario.png" />
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-card full">
+      <div class="feature">
+        <span class="badge purple">Finanzas</span>
+        <h2>Control de costos avanzado</h2>
+        <p class="subtitle">
+          Calcula automáticamente márgenes y utilidades
+        </p>
+        <div class="feature-img costeo glow-purple">
+          <img src="../../../../../assets/img/costeo.png" />
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+<footer class="footer">
+  <p>© 2026 InventaSaaS - Todos los derechos reservados</p>
+</footer>

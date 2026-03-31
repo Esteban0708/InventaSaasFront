@@ -1,0 +1,50 @@
+<div class="modal-overlay" *ngIf="visible" (click)="onCerrar()">
+    <div class="modal-editar" (click)="$event.stopPropagation()">
+        <div class="modal-header">
+            <div>
+                <h2 class="modal-title">Editar Producto</h2>
+                <p class="modal-subtitle">{{productoCopia?.nombre}}</p>
+            </div>
+            <button class="btn-x" (click)="onCerrar()">X</button>
+        </div>
+        <div class="modal-body" *ngIf="productoCopia">
+            <div class="campo-grupo">
+                <div class="campo">
+                    <label for="">Nombre</label>
+                    <input type="text" [(ngModel)]="productoCopia.nombre">
+                </div>
+                <div class="campo">
+                    <label for="">Referencia</label>
+                    <input type="text" [(ngModel)]="productoCopia.ref">
+                </div>
+                <div class="campo-grupo">
+                    <div class="campo">
+                        <label for="">Categoria</label>
+                        <input type="text" [(ngModel)]="productoCopia.categoria">
+                    </div>
+                    <div class="campo">
+                        <label for="">Proveedor</label>
+                        <input type="text" [(ngModel)]="productoCopia.proveedor">
+                    </div>
+                </div>
+                <div class="campo-grupo">
+                    <div class="campo">
+                        <label for="">Stock Minimo (alerta)</label>
+                        <input type="number" [(ngModel)]="productoCopia.min">
+                    </div>
+                </div>
+                <div class="aviso-costeo">
+                    Para editar precios y costo
+                    <a routerLink="/costeo" [queryParams]="{ref: productoCopia.ref} " (click)="onCerrar()">
+                        ir al módulo de costeo ->
+                    </a>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn" (click)="onCerrar()">Cancelar</button>
+                <button class="btn" (click)="onGuardar()">Guardar Cambios</button>
+            </div>
+        </div>
+    </div>
+
+</div>

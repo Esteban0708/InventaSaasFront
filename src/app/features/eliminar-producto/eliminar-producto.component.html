@@ -1,0 +1,17 @@
+<div class="modal-overlay" *ngIf="visible" (click)="onCerrar()">
+    <div class="modal-eliminar" (click)="$event.stopPropagation()">
+        <div class="icono-alerta">!</div>
+
+        <h2 class="modal-title">¿Eliminar Producto?</h2>
+        <p class="modal-desc">Esta accion no se puede deshacer. Se eliminara permanentemente.</p>
+
+        <div class="producto-pill" *ngIf="producto">
+            <span class="pill-nombre"> {{ producto.nombre }}</span>
+            <span class="refe">Ref: {{ producto.ref }}</span>
+        </div>
+        <div class="modal-footer">
+            <button class="btn" (click)="onCerrar()">Cancelar</button>
+            <button class="btn btn-danger" (click)="onConfirmar()">Eliminar</button>
+        </div>
+    </div>
+</div>

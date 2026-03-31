@@ -17,6 +17,7 @@
     box-shadow: 5px 5px rgba(215, 215, 215, 0.671);
     align-items: stretch;
     width: 700px;
+    max-width: 95vw;
     height: 500px;
     position: relative;
 }
@@ -30,6 +31,7 @@
     background-size: 150px;      
     background-position: center;
 }
+
 .login {
     background-color: white;
     border-start-end-radius: 80px;
@@ -119,7 +121,6 @@ label {
     transition: all 0.2s ease;
 }
 
-
 .input-login:focus {
     border-color: rgba(49, 59, 240, 0.873);
     box-shadow: 0 0 5px rgba(49, 59, 240, 0.2);
@@ -134,7 +135,6 @@ label {
     font-size: 12px;
     margin-top: 4px;
 }
-
 
 .correo-error p,
 .password-error p {
@@ -247,7 +247,6 @@ button:hover {
     justify-content: center;
 }
 
-
 .overlay {
     background-color: var.$color;
     display: flex;
@@ -264,16 +263,16 @@ button:hover {
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
     transition: width 0.4s ease;
 }
+
 .overlay:hover {
     width: 420px;
 }
+
 .registrar {
     background-color: var.$color;
     border: 1px solid white;
     width: 150px;
-
 }
-
 
 .form {
     width: 50%;
@@ -285,7 +284,6 @@ button:hover {
     background: white;
 }
 
-
 .login-container.active .login {
     transform: translateX(300%);
 }
@@ -294,20 +292,137 @@ button:hover {
     transform: translateX(-8%);
     padding: 30px;
 }
-.regresar{
+
+.regresar {
     display: flex;
     position: absolute;
     top: 8px;
     margin: 0;
     left: 10px;
 }
-.regresar button{
+
+.regresar button {
     background-color: white;
     color: var.$color;
     font-weight: bold;
 }
-.regresar button:hover{
+
+.regresar button:hover {
     background-color: var.$color;
     color: white;
-    
+}
+
+
+/* ============================================
+   RESPONSIVIDAD
+   ============================================ */
+
+@media (max-width: 768px) {
+    :host {
+        align-items: flex-start;
+        padding: 20px 0;
+    }
+
+    .login-container {
+        width: 95vw;
+        height: auto;
+        flex-direction: column;
+        border-radius: 16px;
+    }
+
+    /* El overlay va arriba como "header" de la tarjeta */
+    .overlay {
+        width: 100% !important;
+        order: 0;
+        border-radius: 16px 16px 0 0;
+        border-end-start-radius: 0;
+        border-top-left-radius: 16px;
+        padding: 24px 20px;
+        transition: none;
+    }
+
+    .overlay:hover {
+        width: 100% !important;
+    }
+
+    /* El form va debajo del overlay */
+    .form {
+        width: 100%;
+        padding: 28px 24px;
+        box-sizing: border-box;
+        order: 1;
+    }
+
+    .login {
+        border-radius: 0 0 16px 16px;
+        border-start-end-radius: 0;
+        border-bottom-right-radius: 16px;
+        display: block;
+    }
+
+    /* El formulario de registro: oculto por defecto en móvil */
+    .register {
+        position: absolute;
+        transform: translateX(100%) !important;
+        width: 100%;
+        box-sizing: border-box;
+        top: 0;
+        left: 0;
+        border-radius: 0 0 16px 16px;
+        display: none;
+    }
+
+    /* Cuando está en modo registro: ocultar login, mostrar register */
+    .login-container.active .login {
+        transform: none;
+        display: none;
+    }
+
+    .login-container.active .register {
+        display: flex;
+        position: relative;
+        transform: translateX(0) !important;
+        padding: 28px 24px;
+        order: 1;
+    }
+
+    .input-login {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .register input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .regresar {
+        top: 6px;
+        left: 6px;
+    }
+
+    .regresar button {
+        font-size: 9px;
+        padding: 6px;
+    }
+}
+
+@media (max-width: 480px) {
+    .login-container {
+        width: 98vw;
+        border-radius: 12px;
+    }
+
+    .form {
+        padding: 20px 16px;
+    }
+
+    .login h2,
+    .register h2 {
+        font-size: x-large;
+    }
+
+    .overlay {
+        padding: 18px 14px;
+    }
 }

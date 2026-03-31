@@ -1,1 +1,179 @@
-<p>ventas works!</p>
+<div class="ventas-layout">
+
+    <div class="panel-izq">
+        <h1 class="panel-title">Registrar venta</h1>
+
+        <div class="seccion">
+            <div class="sec-label">Buscar producto</div>
+            <div class="search-bar">
+                <input #inputBusqueda type="text" placeholder="Nombre, referencia o código..." [value]="terminoBusqueda"
+                    (input)="terminoBusqueda = $any($event.target).value" (keydown)="onEnterBusqueda($event)">
+                <button class="btn-scan" (click)="abrirEscaner()">&#9641; Escanear</button>
+            </div>
+        </div>
+        <div class="scanner-overlay" *ngIf="escaneandoCamara" (click)="cerrarEscaner()">
+            <div class="scanner-modal" (click)="$event.stopPropagation()">
+
+                <div class="scanner-header">
+                    <span>Escanear código de barras</span>
+                    <button class="btn-x" (click)="cerrarEscaner()">✕</button>
+                </div>
+
+                <zxing-scanner [enable]="escaneandoCamara" (scanSuccess)="onCodigoEscaneado($event)"
+                    (camerasFound)="onCamarasEncontradas($event)" [device]="camaraSeleccionada">
+                </zxing-scanner>
+
+                <!-- Selector de cámara si hay varias (ej: frontal/trasera) -->
+                <select *ngIf="camarasDisponibles.length > 1"
+                    (change)="camaraSeleccionada = camarasDisponibles[$any($event.target).value]" class="camara-select">
+                    <option *ngFor="let cam of camarasDisponibles; let i = index" [value]="i">
+                        {{ cam.label || 'Cámara ' + (i + 1) }}
+                    </option>
+                </select>
+
+                <p class="scanner-hint">Apunta la cámara al código de barras del producto</p>
+            </div>
+        </div>
+        <div class="seccion">
+            <div class="sec-label">Productos disponibles</div>
+            <div class="productos-grid">
+                <div class="prod-card" *ngFor="let p of productosFiltrados" (click)="agregarAlCarrito(p)">
+                    <div class="prod-nombre">{{ p.nombre }}</div>
+                    <div class="prod-ref">{{ p.ref }}</div>
+                    <div class="prod-precio">{{ p.pventa }}</div>
+                    <div class="prod-stock" [class.stock-critico]="p.estado === 'critico'">
+                        Stock: {{ p.stock }}
+                        <span *ngIf="p.estado === 'critico'"> ⚠</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="seccion">
+            <div class="sec-label">Cliente / factura electrónica</div>
+            <div class="cliente-box">
+
+                <div class="doc-wrap">
+                    <input type="text" placeholder="Cédula o NIT del cliente..." [value]="documentoBusqueda"
+                        (input)="onInputDocumento($event)" [class.input-buscando]="estadoCliente === 'buscando'"
+                        [class.input-encontrado]="estadoCliente === 'encontrado'"
+                        [class.input-no-encontrado]="estadoCliente === 'no_encontrado'">
+                    <span class="doc-icon" *ngIf="estadoCliente === 'buscando'">
+                        <span class="spinner"></span>
+                    </span>
+                    <span class="doc-icon verde" *ngIf="estadoCliente === 'encontrado'">✓</span>
+                    <span class="doc-icon ambar" *ngIf="estadoCliente === 'no_encontrado'">?</span>
+                </div>
+                <p class="hint">Escribe el documento para buscar. Si no existe, puedes crearlo.</p>
+
+                <div class="cliente-encontrado" *ngIf="estadoCliente === 'encontrado' && clienteEncontrado">
+                    <div class="avatar">{{ clienteEncontrado.nombre.slice(0,2).toUpperCase() }}</div>
+                    <div style="flex:1">
+                        <div class="cli-nombre">{{ clienteEncontrado.nombre }}</div>
+                        <div class="cli-detalle">{{ clienteEncontrado.correo }} · {{ clienteEncontrado.direccion }}
+                        </div>
+                    </div>
+                    <span class="badge-ok">Registrado</span>
+                </div>
+
+                <div class="no-enc-box" *ngIf="estadoCliente === 'no_encontrado' && !mostrarFormNuevo">
+                    <div class="no-enc-ico">?</div>
+                    <div style="flex:1">
+                        <div class="no-enc-titulo">Cliente no encontrado</div>
+                        <div class="no-enc-sub">Documento: {{ documentoBusqueda }}</div>
+                    </div>
+                    <button class="btn-crear" (click)="mostrarFormCrear()">+ Crear</button>
+                </div>
+
+                <div class="form-nuevo" *ngIf="mostrarFormNuevo">
+                    <div class="tipo-row">
+                        <div class="tipo-btn" [class.activo]="nuevoCliente.tipo === 'natural'"
+                            (click)="nuevoCliente.tipo = 'natural'">Persona natural</div>
+                        <div class="tipo-btn" [class.activo]="nuevoCliente.tipo === 'empresa'"
+                            (click)="nuevoCliente.tipo = 'empresa'">Empresa / NIT</div>
+                    </div>
+                    <div class="campo-row">
+                        <div class="campo">
+                            <label>Nombre completo</label>
+                            <input type="text" [(ngModel)]="nuevoCliente.nombre" placeholder="Nombre">
+                        </div>
+                        <div class="campo">
+                            <label>Dirección</label>
+                            <input type="text" [(ngModel)]="nuevoCliente.direccion" placeholder="Calle 10 # 5-20">
+                        </div>
+                    </div>
+                    <div class="campo-row">
+                        <div class="campo">
+                            <label>Correo electrónico</label>
+                            <input type="email" [(ngModel)]="nuevoCliente.correo" placeholder="cliente@email.com">
+                        </div>
+                        <div class="campo">
+                            <label>Régimen tributario</label>
+                            <select [(ngModel)]="nuevoCliente.regimen">
+                                <option value="simplificado">Simplificado</option>
+                                <option value="comun">Común / responsable IVA</option>
+                                <option value="gran_contribuyente">Gran contribuyente</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button class="btn-guardar-cli" (click)="guardarNuevoCliente()">
+                        Guardar cliente y continuar
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="panel-der">
+        <div class="panel-title">Carrito</div>
+
+        <div class="carrito-vacio" *ngIf="carrito.length === 0">
+            Agrega productos haciendo clic en ellos
+        </div>
+
+        <div class="carrito-lista" *ngIf="carrito.length > 0">
+            <div class="carrito-item" *ngFor="let item of carrito">
+                <div class="item-info">
+                    <div class="item-nombre">{{ item.producto.nombre }}</div>
+                    <div class="item-ref">{{ item.producto.ref }} · {{ item.producto.pventa }} c/u</div>
+                </div>
+                <div class="qty-ctrl">
+                    <button class="qty-btn" (click)="cambiarCantidad(item, -1)">−</button>
+                    <span class="qty-num">{{ item.cantidad }}</span>
+                    <button class="qty-btn" (click)="cambiarCantidad(item, 1)">+</button>
+                </div>
+                <div class="item-total">{{ formatearPrecio(item.subtotal) }}</div>
+                <button class="item-del" (click)="eliminarDelCarrito(item)">✕</button>
+            </div>
+        </div>
+
+        <div class="resumen" *ngIf="carrito.length > 0">
+            <div class="res-row"><span>Subtotal</span><span>{{ formatearPrecio(subtotal) }}</span></div>
+            <div class="res-row"><span>IVA (19%)</span><span>{{ formatearPrecio(iva) }}</span></div>
+            <div class="res-row"><span>Descuento</span><span>{{ formatearPrecio(descuento) }}</span></div>
+            <div class="res-total"><span>Total</span><span>{{ formatearPrecio(total) }}</span></div>
+        </div>
+
+        <div>
+            <div class="sec-label">Método de pago</div>
+            <div class="pago-row">
+                <div class="pago-btn" [class.activo]="metodoPago === 'efectivo'" (click)="metodoPago = 'efectivo'">
+                    Efectivo</div>
+                <div class="pago-btn" [class.activo]="metodoPago === 'transferencia'"
+                    (click)="metodoPago = 'transferencia'">Transferencia</div>
+                <div class="pago-btn" [class.activo]="metodoPago === 'tarjeta'" (click)="metodoPago = 'tarjeta'">Tarjeta
+                </div>
+            </div>
+        </div>
+
+        <button class="btn-facturar" [disabled]="!puedeFacturar" [class.disabled]="!puedeFacturar"
+            (click)="generarFactura()">
+            Generar factura electrónica
+        </button>
+        <p class="hint" *ngIf="!puedeFacturar">
+            {{ carrito.length === 0 ? 'Agrega al menos un producto' : 'Selecciona o registra un cliente' }}
+        </p>
+
+    </div>
+</div>
