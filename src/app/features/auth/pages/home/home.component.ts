@@ -1,5 +1,5 @@
-import { AfterViewInit, Component, ElementRef } from '@angular/core';
-import { Route, Router } from '@angular/router';
+import { Component, AfterViewInit, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
